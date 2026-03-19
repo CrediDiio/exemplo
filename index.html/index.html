@@ -6,11 +6,126 @@
     <title>FEDERALPREC | Antecipação de Precatórios</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-<link rel="stylesheet" href="style.css">
- <section id="sobre" class="section">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ============================================================
+           MANTENDO SEUS ESTILOS ORIGINAIS DO WHATSAPP E ANIMAÇÕES
+           ============================================================ */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-fixed:hover { transform: scale(1.1); background-color: #20ba5a; }
+        .whatsapp-fixed svg { width: 38px; height: 38px; fill: white; }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .whatsapp-fixed { animation: pulse-green 2s infinite; }
+
+        /* ============================================================
+           CORREÇÕES ESPECÍFICAS PARA MOBILE (TELAS ATÉ 768px)
+           ============================================================ */
+        @media (max-width: 768px) {
+            
+            /* 1. CORREÇÃO DA NAVBAR (BOTÃO SUPERIOR NEGOCIE JÁ) */
+            .navbar {
+                padding: 10px 15px !important; /* Reduz padding lateral da barra */
+                justify-content: space-between; /* Alinha logo na esquerda, botão na direita */
+            }
+
+            .navbar .logo {
+                font-size: 1.2rem !important; /* Diminui levemente o logo no celular */
+            }
+
+            /* Esconde os links de texto (SOBRE, VANTAGENS) no celular */
+            .navbar .nav-links a:not(.btn-cta) {
+                display: none !important;
+            }
+
+            /* Garante que o container dos links não ocupe espaço desnecessário */
+            .navbar .nav-links {
+                display: flex;
+                justify-content: flex-end;
+                width: auto;
+                margin: 0;
+            }
+
+            /* Ajusta o tamanho e padding do botão "NEGOCIE JÁ" no topo */
+            .navbar .btn-cta {
+                padding: 8px 15px !important;
+                font-size: 13px !important;
+                margin: 0 !important;
+                display: inline-block !important; /* Garante que ele apareça */
+            }
+
+            /* 2. CORREÇÃO DO BOTÃO WHATSAPP (PARA NÃO COBRIR O FORMULÁRIO) */
+            .whatsapp-fixed {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .whatsapp-fixed svg { width: 30px; height: 30px; }
+
+            /* 3. RESPIRO NO FINAL DO FORMULÁRIO */
+            .form-wrapper {
+                padding: 30px 20px;
+                margin-bottom: 50px !important; /* Espaço para o WhatsApp flutuar sem cobrir o 'Enviar' */
+            }
+
+            /* 4. AJUSTES GERAIS DE CONTAINER E EQUIPE */
+            .container {
+                padding: 0 15px;
+                overflow-x: hidden;
+            }
+            .grid-team {
+                gap: 20px !important; /* Diminui espaço entre fotos da equipe no celular */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" data-aos="fade-down">
+        <div class="logo">FEDERAL<span>PREC</span></div>
+        <div class="nav-links">
+            <a href="#sobre">SOBRE</a>
+            <a href="#vantagens">VANTAGENS</a>
+            <a href="#contato" class="btn-cta">NEGOCIE JÁ</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content" data-aos="fade-right">
+            <p class="subtitle">NEGOCIAÇÃO DIRETA</p>
+            <h1>ANTECIPAÇÃO DE <br><span>PRECATÓRIOS</span></h1>
+            <p class="description">Liquidez, agilidade e transparência. Receba seus valores de forma imediata com quem atua há 6 anos no mercado com fundo próprio.</p>
+            <div class="hero-stats">
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200"><span>$</span> LIQUIDEZ</div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="400"><span>⏱</span> AGILIDADE</div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="600"><span>🔍</span> TRANSPARÊNCIA</div>
+            </div>
+        </div>
+    </header>
+
+    <section id="sobre" class="section">
         <div class="container grid-2">
             <div class="text-block" data-aos="fade-up">
                 <h2 class="section-title">SOBRE NÓS</h2>
@@ -147,9 +262,7 @@
 
         </div>
     </div>
-
 </section>
-
 
     <footer class="footer">
         <div class="container footer-grid">
