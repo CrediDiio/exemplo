@@ -1,0 +1,216 @@
+/* 1. VARIÁVEIS E BASE */
+:root {
+    --turquesa: #47c1b1;
+    --preto: #000000;
+    --cinza-escuro: #0a0a0a;
+    --cinza-card: #121212;
+    --branco: #ffffff;
+    --texto: #b0b0b0;
+    --whatsapp: #25d366;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    background-color: var(--preto); 
+    color: var(--branco); 
+    font-family: 'Montserrat', sans-serif; 
+    scroll-behavior: smooth; 
+    overflow-x: hidden;
+}
+
+/* 2. NAVBAR */
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 25px 8%; 
+    background: rgba(0,0,0,0.98); 
+    position: sticky; 
+    top: 0; 
+    z-index: 999; 
+    border-bottom: 1px solid #1a1a1a; 
+}
+
+.logo { font-size: 1.4rem; font-weight: 700; letter-spacing: 3px; }
+.logo span { color: var(--turquesa); }
+
+.nav-links a { 
+    color: var(--branco); 
+    text-decoration: none; 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    margin-left: 30px; 
+    transition: 0.3s; 
+}
+.nav-links a:hover { color: var(--turquesa); }
+
+.btn-cta { 
+    background: var(--turquesa); 
+    color: var(--preto) !important; 
+    padding: 12px 25px; 
+    border-radius: 3px; 
+    transition: 0.4s !important; 
+}
+
+/* 3. HERO SECTION */
+.hero { 
+    height: 90vh; 
+    display: flex; 
+    align-items: center; 
+    padding: 0 8%; 
+    background: linear-gradient(to right, #000 40%, transparent), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070'); 
+    background-size: cover; 
+    background-position: center;
+}
+
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; line-height: 1.1; margin: 20px 0; }
+.hero h1 span { color: var(--turquesa); }
+.subtitle { color: var(--turquesa); letter-spacing: 5px; font-size: 0.8rem; font-weight: 700; }
+.description { max-width: 500px; color: var(--texto); margin-bottom: 40px; }
+
+.hero-stats { display: flex; gap: 40px; }
+.stat-item span { display: block; color: var(--turquesa); font-size: 1.8rem; font-weight: 700; }
+
+/* 4. SEÇÕES E GRIDS GENÉRICOS */
+.section { padding: 100px 0; }
+.dark-bg { background-color: var(--cinza-escuro); }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.section-title { font-size: 1.8rem; margin-bottom: 40px; border-left: 4px solid var(--turquesa); padding-left: 20px; letter-spacing: 2px; }
+
+.grid-cards { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 25px; 
+}
+
+.card { 
+    background: var(--cinza-card); 
+    padding: 40px; 
+    border: 1px solid #1f1f1f; 
+    transition: 0.4s; 
+}
+.card:hover { border-color: var(--turquesa); transform: translateY(-10px); }
+
+/* ============================================
+   ESTILOS: SEÇÃO EQUIPE (CORRIGIDO)
+   ============================================ */
+.team-section {
+    padding: 80px 0;
+    background-color: var(--cinza-escuro);
+    text-align: center;
+}
+
+.grid-team {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 por linha no desktop */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-card {
+    background: var(--cinza-card);
+    padding: 30px 20px;
+    border-radius: 15px;
+    border: 1px solid #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--turquesa);
+}
+
+.team-photo-wrapper {
+    width: 140px; 
+    height: 140px;
+    margin: 0 auto 20px;
+    border-radius: 50%; /* Faz o círculo perfeito */
+    overflow: hidden; /* Corta a imagem em círculo */
+    border: 3px solid var(--turquesa);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a foto não estique */
+    display: block;
+}
+
+.team-card h3 {
+    color: var(--branco);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.team-card p {
+    color: var(--turquesa);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .grid-team { grid-template-columns: repeat(2, 1fr); } /* 2 por linha em tablets */
+}
+
+@media (max-width: 480px) {
+    .grid-team { grid-template-columns: 1fr; } /* 1 por linha no celular */
+    .team-photo-wrapper { width: 160px; height: 160px; }
+}
+
+/* 6. FORMULÁRIO */
+.form-wrapper { background: var(--cinza-card); padding: 50px; border-radius: 5px; }
+.input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+
+input, select, textarea { 
+    width: 100%; 
+    padding: 15px; 
+    background: #000; 
+    border: 1px solid #333; 
+    color: #fff; 
+    font-family: inherit; 
+}
+
+.btn-main { 
+    width: 100%; 
+    padding: 20px; 
+    background: var(--turquesa); 
+    border: none; 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: 0.3s; 
+}
+
+/* 7. FOOTER */
+.footer { padding: 60px 0; border-top: 1px solid #1a1a1a; color: var(--texto); }
+.footer-grid { display: flex; justify-content: space-between; align-items: center; }
+
+/* 8. RESPONSIVIDADE */
+@media (max-width: 1024px) {
+    .grid-team { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 3rem; }
+}
+
+@media (max-width: 768px) {
+    .grid-2, .input-group { grid-template-columns: 1fr; }
+    .navbar { padding: 15px 5%; }
+    .hero { text-align: center; justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .footer-grid { flex-direction: column; gap: 30px; text-align: center; }
+    .contact-details { text-align: center; }
+}
+
+@media (max-width: 480px) {
+    .grid-team { grid-template-columns: 1fr; }
+    .team-photo-wrapper { width: 160px; height: 160px; }
+}

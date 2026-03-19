@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FEDERALPREC | Antecipação de Precatórios</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+  <style>
+        
+       /* Ajuste do botão fixo do WhatsApp */
+.whatsapp-fixed {
+    position: fixed;
+    bottom: 20px; /* Reduzi um pouco para não subir tanto */
+    right: 20px;
+    width: 55px; /* Tamanho levemente menor para celular */
+    height: 55px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    z-index: 9999; /* Garante que fique acima de tudo */
+    transition: all 0.3s ease;
+}
+
+/* CORREÇÃO PARA MOBILE */
+@media (max-width: 768px) {
+    /* Diminuir o botão no celular para não cobrir o texto */
+    .whatsapp-fixed {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    /* Adicionar espaço no final do formulário para o botão não sobrepor o 'Enviar' */
+    .form-wrapper {
+        padding: 30px 20px;
+        margin-bottom: 40px; /* Cria um respiro antes do footer */
+    }
+
+    .btn-main {
+        padding: 18px; /* Botão mais clicável no dedo */
+        font-size: 16px;
+    }
+
+    /* Garante que o grid de equipe não quebre o layout lateral */
+    .container {
+        padding: 0 15px;
+        overflow-x: hidden;
+    }
+}
+        .whatsapp-fixed:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+        }
+
+        .whatsapp-fixed svg {
+            width: 38px;
+            height: 38px;
+            fill: white;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" data-aos="fade-down">
+        <div class="logo">FEDERAL<span>PREC</span></div>
+        <div class="nav-links">
+            <a href="#sobre">SOBRE</a>
+            <a href="#vantagens">VANTAGENS</a>
+            <a href="#contato" class="btn-cta">NEGOCIE JÁ</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content" data-aos="fade-right">
+            <p class="subtitle">NEGOCIAÇÃO DIRETA</p>
+            <h1>ANTECIPAÇÃO DE <br><span>PRECATÓRIOS</span></h1>
+            <p class="description">Liquidez, agilidade e transparência. Receba seus valores de forma imediata com quem atua há 6 anos no mercado com fundo próprio.</p>
+            <div class="hero-stats">
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200"><span>$</span> LIQUIDEZ</div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="400"><span>⏱</span> AGILIDADE</div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="600"><span>🔍</span> TRANSPARÊNCIA</div>
+            </div>
+        </div>
+    </header>
+
+    <section id="sobre" class="section">
+        <div class="container grid-2">
+            <div class="text-block" data-aos="fade-up">
+                <h2 class="section-title">SOBRE NÓS</h2>
+                <p>A FederalPrec é especializada na antecipação de precatórios federais e estaduais, conectando beneficiários a investidores com total segurança jurídica.</p>
+                <p>Nossas operações são formalizadas por <strong>escritura pública no 15º Cartório</strong>, garantindo fé pública e agilidade através de nossa sociedade direta com a tabeliã.</p>
+            </div>
+            <div class="image-placeholder" data-aos="fade-left">
+                <div class="quote-card">
+                    <p>"Fundo próprio independente e parcerias sólidas para garantir a melhor proposta do mercado."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vantagens" class="section dark-bg">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">DIFERENCIAIS ESTRATÉGICOS</h2>
+            <div class="grid-cards">
+                <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-icon">01</div>
+                    <h3>PAGAMENTO RÁPIDO</h3>
+                    <p>Valores disponíveis entre 2 e 7 dias úteis após a formalização.</p>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-icon">02</div>
+                    <h3>COMISSÃO EM 24H</h3>
+                    <p>Pagamento agilizado e sigiloso para escritórios de advocacia parceiros.</p>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card-icon">03</div>
+                    <h3>HONORÁRIOS PRESERVADOS</h3>
+                    <p>O advogado não precisa comprometer sua parte para viabilizar a operação do cliente.</p>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card-icon">04</div>
+                    <h3>SIGILO ABSOLUTO</h3>
+                    <p>Modelos de parceria flexíveis que respeitam a relação entre advogado e cliente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section">
+        <div class="container">
+            <div class="form-wrapper" data-aos="flip-up">
+                <h2 class="section-title">SOLICITAR ANÁLISE</h2>
+                <form id="formCotacao">
+                    <div class="input-group">
+                        <input type="text" id="nome" placeholder="Nome do Beneficiário ou Advogado" required>
+                        <input type="email" id="email" placeholder="E-mail para contato" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="valor" placeholder="Valor Estimado (R$)" required>
+                        <select id="tipo">
+                            <option>Tipo: Federal (PRC/RPV)</option>
+                            <option>Tipo: Estadual</option>
+                        </select>
+                    </div>
+                    <textarea id="detalhes" placeholder="Descreva brevemente o tribunal ou ente devedor" rows="4"></textarea>
+                    <button type="submit" class="btn-main">ENVIAR PROPOSTA</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe" class="section team-section" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">CONHEÇA NOSSO TIME DE ESPECIALISTAS</h2>
+        <div class="grid-team">
+            
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="team-photo-wrapper">
+                    <img src="Funcionarios/Bruno couto-Gerente Comercial.jpeg" alt="Bruno Couto" class="team-photo">
+                </div>
+                <h3>Bruno Couto</h3>
+                <p>Gerente Comercial</p>
+            </div>
+
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="team-photo-wrapper">
+                    <img src="Funcionarios/Jannyne nunes-Gerente Comercial.jpeg" alt="Jannyne Nunes" class="team-photo">
+                </div>
+                <h3>Jannyne Nunes</h3>
+                <p>Gerente Comercial</p>
+            </div>
+
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="team-photo-wrapper">
+                    <img src="Funcionarios/Lara Santos-Gerente Comercial.jpeg" alt="Lara Santos" class="team-photo">
+                </div>
+                <h3>Lara Santos</h3>
+                <p>Gerente Comercial</p>
+            </div>
+
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="team-photo-wrapper">
+                    <img src="Funcionarios/Larissa Duarte-Diretora Comercial.jpeg" alt="Larissa Duarte" class="team-photo">
+                </div>
+                <h3>Larissa Duarte</h3>
+                <p>Diretora Comercial</p>
+            </div>
+
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="500">
+                <div class="team-photo-wrapper">
+                    <img src="Funcionarios/Mariane Fonseca-Gerente Comercial.jpeg" alt="Mariane Fonseca" class="team-photo">
+                </div>
+                <h3>Mariane Fonseca</h3>
+                <p>Gerente Comercial</p>
+            </div>
+
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="600">
+                <div class="team-photo-wrapper">
+                    <img src="Funcionarios/Pedro Ferreira-Gerente Comercial.jpeg" alt="Pedro Ferreira" class="team-photo">
+                </div>
+                <h3>Pedro Ferreira</h3>
+                <p>Gerente Comercial</p>
+            </div>
+
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="700">
+                <div class="team-photo-wrapper">
+                    <img src="Funcionarios/Thamires Moura-Gerente Comercial.jpeg" alt="Thamires Moura" class="team-photo">
+                </div>
+                <h3>Thamires Moura</h3>
+                <p>Gerente Comercial</p>
+            </div>
+
+            <div class="team-card" data-aos="zoom-in" data-aos-delay="800">
+                <div class="team-photo-wrapper">
+                    <img src="Funcionarios/Wallace Alves-Gerente Comercial.jpeg" alt="Wallace Alves" class="team-photo">
+                </div>
+                <h3>Wallace Alves</h3>
+                <p>Gerente Comercial</p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="brand">
+                <div class="logo">FEDERAL<span>PREC</span></div>
+                <p>CNPJ: 41.495.962/0001-46</p>
+            </div>
+            <div class="contact-details">
+                <p><strong>Larissa Duarte</strong> | Diretora Comercial</p>
+                <p>WhatsApp: (21) 97180-4527</p>
+                <p>CEO Corporate - Barra da Tijuca, RJ</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5521971804527" class="whatsapp-fixed" target="_blank" aria-label="Falar pelo WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.406 3.484 2.246 2.248 3.484 5.232 3.484 8.405 0 6.556-5.332 11.888-11.888 11.888-2.015 0-3.991-.51-5.739-1.477l-6.25 1.639zm6.39-4.854c1.63.921 3.259 1.411 4.956 1.411 5.356 0 9.713-4.359 9.713-9.713 0-5.355-4.358-9.713-9.713-9.713-2.597 0-5.038 1.01-6.871 2.844-1.833 1.835-2.844 4.275-2.844 6.871 0 1.712.454 3.391 1.314 4.885l-.99 3.613 3.735-.978zm11.411-4.761c-.303-.151-1.788-.882-2.057-.981-.269-.099-.465-.148-.659.151-.194.297-.749.981-.918 1.18-.169.196-.338.219-.64.068-.303-.151-1.278-.471-2.435-1.503-.9-.804-1.507-1.797-1.684-2.099-.177-.302-.018-.465.133-.615.136-.135.303-.354.454-.531.151-.177.202-.301.303-.503.101-.201.051-.377-.025-.531-.076-.151-.659-1.591-.903-2.172-.236-.57-.477-.492-.659-.501-.17-.008-.363-.01-.557-.01-.194 0-.51.072-.776.363-.266.291-1.014 1.006-1.014 2.454 0 1.448 1.054 2.846 1.203 3.047.148.201 2.074 3.22 5.025 4.498.701.304 1.248.485 1.673.621.705.224 1.346.193 1.853.117.565-.085 1.788-.73 2.041-1.436.253-.706.253-1.31.177-1.436-.076-.126-.269-.202-.572-.353z"/>
+        </svg>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+    <script src="javascript.js"></script>
+</body>
+</html>
