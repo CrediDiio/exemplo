@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FEDERALPREC | Antecipação de Precatórios</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ESTILOS DE APOIO PARA O WHATSAPP E NOTÍCIAS */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
+        }
+        .whatsapp-fixed svg { width: 38px; height: 38px; fill: white; }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* GRID DE NOTÍCIAS */
+        .grid-blog {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .blog-card {
+            background: #121212;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover { transform: translateY(-8px); border-color: #47c1b1; }
+        .blog-image-wrapper { position: relative; width: 100%; height: 220px; overflow: hidden; }
+        .blog-image { width: 100%; height: 100%; object-fit: cover; }
+        .blog-content { padding: 25px; flex-grow: 1; }
+        .blog-badge { background: #47c1b1; color: #000; padding: 5px 10px; font-size: 10px; font-weight: bold; border-radius: 3px; position: absolute; top: 10px; left: 10px; }
+        .blog-title { font-size: 1.1rem; color: #fff; margin: 15px 0; line-height: 1.4; }
+        .blog-excerpt { color: #ccc; font-size: 0.9rem; margin-bottom: 20px; }
+        .blog-link { color: #47c1b1; text-decoration: none; font-weight: bold; cursor: pointer; }
+
+        /* ESTILOS DO MODAL (JANELA DE NOTÍCIA) */
+        .modal-news {
+            display: none;
+            position: fixed;
+            z-index: 10001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            border: 1px solid #333;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .modal-body h2 { color: #47c1b1; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+        .modal-body p { color: #ccc; line-height: 1.8; margin-bottom: 30px; }
+        .btn-materia {
+            display: inline-block;
+            background: #47c1b1;
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-materia:hover { background: #3aa899; }
+
+        @media (max-width: 768px) {
+            .grid-blog { grid-template-columns: 1fr; }
+            .navbar .nav-links a:not(.btn-cta) { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+   <nav class="navbar" data-aos="fade-down">
+    <div class="logo">FEDERAL<span>PREC</span></div>
+    <div class="nav-links">
+        <a href="#">INÍCIO</a>
+        <a href="#sobre">SOBRE</a>
+        <a href="#vantagens">VANTAGENS</a>
+        <a href="#noticias">NOTÍCIAS</a> 
+        <a href="#contato" class="btn-cta">NEGOCIE JÁ</a>
+    </div>
+</nav>
+
+    <header class="hero">
+        <div class="hero-content" data-aos="fade-right">
+            <p class="subtitle">NEGOCIAÇÃO DIRETA</p>
+            <h1>ANTECIPAÇÃO DE <br><span>PRECATÓRIOS</span></h1>
+            <p class="description">Liquidez, agilidade e transparência. Receba seus valores de forma imediata com quem atua há 6 anos no mercado com fundo próprio.</p>
+            <div class="hero-stats">
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200"><span>$</span> LIQUIDEZ</div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="400"><span>⏱</span> AGILIDADE</div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="600"><span>🔍</span> TRANSPARÊNCIA</div>
+            </div>
+        </div>
+    </header>
+
+  <section id="sobre" class="section">
+    <div class="container grid-2">
+        <div class="text-block" data-aos="fade-up" style="font-size: 1.15rem; line-height: 1.8;">
+            <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 25px;">SOBRE NÓS</h2>
+            <p style="margin-bottom: 20px;">
+                A <strong>FederalPrec</strong> é especializada na antecipação de precatórios federais e estaduais, conectando beneficiários a investidores com total segurança jurídica.
+            </p>
+            <p>
+                Nossas operações são formalizadas por <strong>escritura pública no 15º Cartório</strong>, garantindo fé pública e agilidade através de nossa sociedade direta com a tabeliã.
+            </p>
+        </div>
+
+        <div class="image-placeholder" data-aos="fade-left">
+            <div class="quote-card" style="border-left: 5px solid #47c1b1; padding: 30px; background: rgba(255,255,255,0.03);">
+                <p style="font-size: 1.3rem; font-style: italic; color: #47c1b1; font-weight: 300;">
+                    "Fundo próprio independente e parcerias sólidas para garantir a melhor proposta do mercado."
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <section id="vantagens" class="section dark-bg">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">DIFERENCIAIS ESTRATÉGICOS</h2>
+        <div class="grid-cards">
+            <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card-icon">01</div>
+                <h3>LIQUIDEZ IMEDIATA PARA SEU PRECATÓRIO</h3>
+                <p>Antecipe seu crédito com uma empresa especializada na compra de precatórios. Pagamento rápido, com liberação entre 2 e 7 dias úteis após a análise processual, com total segurança jurídica e financeira.</p>
+            </div>
+
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card-icon">02</div>
+                <h3>PARCERIA SÓLIDA COM ADVOGADOS</h3>
+                <p>Atuamos em conjunto com advogados em todo o Brasil. Comissão paga com rapidez, sigilo e total transparência, valorizando o profissional que intermedia a operação.</p>
+            </div>
+
+            <div class="card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card-icon">03</div>
+                <h3>HONORÁRIOS PRESERVADOS E VENDA PARCIAL</h3>
+                <p>Os honorários do advogado são preservados, permitindo a antecipação sem custos extras ao cliente. Além disso, a negociação pode ser feita sobre apenas uma parte do precatório, mantendo o restante para o futuro.</p>
+            </div>
+
+            <div class="card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card-icon">04</div>
+                <h3>SIGILO, SEGURANÇA E FLEXIBILIDADE</h3>
+                <p>Operações conduzidas com absoluta confidencialidade. Modelos flexíveis de negociação que preservam a relação entre cliente e advogado ou intermediadores, com total respaldo jurídico.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="noticias" class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">ÚLTIMAS NOTÍCIAS</h2>
+        
+        <div class="grid-blog">
+            <article class="blog-card" data-aos="fade-up">
+                <div class="blog-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=600" class="blog-image">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">5 motivos para você vender precatórios</h3>
+                    <p class="blog-excerpt">Entenda as vantagens de antecipar seus créditos e como reinvestir esse capital...</p>
+                    <div class="blog-footer">
+                        <span class="portal-name">Migalhas</span>
+                        <a class="blog-link" onclick="openNews('Venda de Precatórios', 'Vender um precatório pode ser a solução para quem busca liquidez imediata para investir em novos negócios ou quitar dívidas onerosas.', 'https://www.migalhas.com.br/depeso/280886/5-motivos-para-voce-vender-precatorios')">Saiba mais..</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+    <div class="blog-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=600" class="blog-image">
+    </div>
+    <div class="blog-content">
+        <h3 class="blog-title">Cinco situações para usar um precatório</h3>
+        <p class="blog-excerpt">Saiba como utilizar seus títulos para quitar dívidas e organizar sua vida financeira...</p>
+        <div class="blog-footer">
+            <span class="portal-name">Band Economia</span>
+            <a class="blog-link" onclick="openNews('Quitar Dívidas', 'O uso de precatórios tem se tornado uma ferramenta estratégica para negociação de débitos e recuperação de crédito no mercado.', 'https://www.band.com.br/economia/noticias/cinco-situacoes-para-usar-um-precatorio-e-quitar-as-dividas-202603131507')">Saiba mais..</a>
+        </div>
+             </div>
+              </article>
+
+            <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="blog-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=600" class="blog-image">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Venda de precatório paga Imposto de Renda?</h3>
+                    <p class="blog-excerpt">STJ decide sobre a incidência de tributação na alienação de direitos creditórios...</p>
+                    <div class="blog-footer">
+                        <span class="portal-name">Migalhas</span>
+                        <a class="blog-link" onclick="openNews('STJ e Imposto de Renda', 'A decisão do STJ traz segurança jurídica para quem deseja vender seus títulos sem a preocupação de bitributação indevida.', 'https://www.migalhas.com.br/depeso/426775/venda-de-precatorio-paga-imposto-de-renda-o-stj-diz-que-nao')">Saiba mais..</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="blog-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=600" class="blog-image">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">PEC 66 e o dinheiro que você tem a receber</h3>
+                    <p class="blog-excerpt">Entenda os riscos e as novas regras para o pagamento de precatórios pelos governos...</p>
+                    <div class="blog-footer">
+                        <span class="portal-name">Gazeta do Povo</span>
+                        <a class="blog-link" onclick="openNews('Impactos da PEC 66', 'As mudanças constitucionais podem afetar o cronograma de pagamentos, tornando a antecipação uma alternativa viável para evitar esperas.', 'https://www.gazetadopovo.com.br/vozes/fernando-jasper/precatorios-pec-66-voce-tem-dinheiro-receber-governo-ma-noticia/')">Saiba mais..</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<div id="newsModal" class="modal-news">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeNews()">&times;</span>
+        <div class="modal-body">
+            <h2 id="modalTitle">Título</h2>
+            <p id="modalDescription">Descrição...</p>
+            <a id="modalExternalLink" href="#" target="_blank" class="btn-materia">Ler matéria completa no portal</a>
+        </div>
+    </div>
+</div>
+
+   <section id="contato" class="section">
+    <div class="container grid-2">
+        <div class="contact-info" data-aos="fade-right">
+            <span class="tag-atendimento">Atendimento Especializado</span>
+            <h2 class="section-title" style="text-align: left;">Fale com Nossos Consultores</h2>
+            <p class="subtitle">Tire todas suas dúvidas e descubra as melhores opções para seu precatório.</p>
+            
+            <div class="info-items">
+                <div class="info-item">
+                    <div class="icon-circle">📞</div>
+                    <div>
+                        <strong>Resposta Rápida</strong>
+                        <p>Retorno em até 24 horas </p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="icon-circle">💬</div>
+                    <div>
+                        <strong>Consultoria Gratuita</strong>
+                        <p>Receba uma avaliação sem compromisso</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="icon-circle">🚀</div>
+                    <div>
+                        <strong>Atendimento Personalizado</strong>
+                        <p>Soluções específicas para seu caso</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-wrapper" data-aos="flip-up">
+            <h2 class="form-title">SOLICITAR ANÁLISE</h2>
+            <form id="formCotacao">
+                <div class="input-group">
+                    <input type="text" id="nome" placeholder="Nome completo" required>
+                    <input type="email" id="email" placeholder="E-mail para contato" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="valor" placeholder="Valor do Precatório (R$)" required>
+                    <select id="tipo">
+                        <option value="" disabled selected>Tipo de Precatório</option>
+                        <option>Federal</option>
+                        <option>Estadual</option>
+                        <option>Municipal</option>
+                        <option>Trabalhista</option>
+                        <option>RPV</option>
+                        <option>Não sei informar</option>
+                    </select>
+                </div>
+                <textarea id="detalhes" placeholder=" Empresa ou o Órgão processado" rows="4"></textarea>
+                <button type="submit" class="btn-main">ENVIAR PROPOSTA</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <section id="equipe" class="section team-section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">CONHEÇA NOSSO TIME DE ESPECIALISTAS</h2>
+            <div class="grid-team">
+                <div class="team-card"><div class="team-photo-wrapper"><img src="Funcionarios/Larissa Duarte-Diretora Comercial.jpeg" class="team-photo"></div><h3>Larissa Duarte</h3><p>Diretora Comercial</p></div>
+                <div class="team-card"><div class="team-photo-wrapper"><img src="Funcionarios/Bruno couto-Gerente Comercial.jpeg" class="team-photo"></div><h3>Bruno Couto</h3><p>Gerente Comercial</p></div>
+                <div class="team-card"><div class="team-photo-wrapper"><img src="Funcionarios/Jannyne nunes-Gerente Comercial.jpeg" class="team-photo"></div><h3>Jannyne Nunes</h3><p>Gerente Comercial</p></div>
+                <div class="team-card"><div class="team-photo-wrapper"><img src="Funcionarios/Lara Santos-Gerente Comercial.jpeg" class="team-photo"></div><h3>Lara Santos</h3><p>Gerente Comercial</p></div>
+                <div class="team-card"><div class="team-photo-wrapper"><img src="Funcionarios/Mariane Fonseca-Gerente Comercial.jpeg" class="team-photo"></div><h3>Mariane Fonseca</h3><p>Gerente Comercial</p></div>
+                <div class="team-card"><div class="team-photo-wrapper"><img src="Funcionarios/Pedro Ferreira-Gerente Comercial.jpeg" class="team-photo"></div><h3>Pedro Ferreira</h3><p>Gerente Comercial</p></div>
+                <div class="team-card"><div class="team-photo-wrapper"><img src="Funcionarios/Thamires Moura-Gerente Comercial.jpeg" class="team-photo"></div><h3>Thamires Moura</h3><p>Gerente Comercial</p></div>
+                <div class="team-card"><div class="team-photo-wrapper"><img src="Funcionarios/Wallace Alves-Gerente Comercial.jpeg" class="team-photo"></div><h3>Wallace Alves</h3><p>Gerente Comercial</p></div>
+            </div>
+        </div>
+    </section>
+    
+ <a href="https://wa.me/5521971804527" class="whatsapp-fixed" target="_blank" aria-label="Falar pelo WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.406 3.484 2.246 2.248 3.484 5.232 3.484 8.405 0 6.556-5.332 11.888-11.888 11.888-2.015 0-3.991-.51-5.739-1.477l-6.25 1.639zm6.39-4.854c1.63.921 3.259 1.411 4.956 1.411 5.356 0 9.713-4.359 9.713-9.713 0-5.355-4.358-9.713-9.713-9.713-2.597 0-5.038 1.01-6.871 2.844-1.833 1.835-2.844 4.275-2.844 6.871 0 1.712.454 3.391 1.314 4.885l-.99 3.613 3.735-.978zm11.411-4.761c-.303-.151-1.788-.882-2.057-.981-.269-.099-.465-.148-.659.151-.194.297-.749.981-.918 1.18-.169.196-.338.219-.64.068-.303-.151-1.278-.471-2.435-1.503-.9-.804-1.507-1.797-1.684-2.099-.177-.302-.018-.465.133-.615.136-.135.303-.354.454-.531.151-.177.202-.301.303-.503.101-.201.051-.377-.025-.531-.076-.151-.659-1.591-.903-2.172-.236-.57-.477-.492-.659-.501-.17-.008-.363-.01-.557-.01-.194 0-.51.072-.776.363-.266.291-1.014 1.006-1.014 2.454 0 1.448 1.054 2.846 1.203 3.047.148.201 2.074 3.22 5.025 4.498.701.304 1.248.485 1.673.621.705.224 1.346.193 1.853.117.565-.085 1.788-.73 2.041-1.436.253-.706.253-1.31.177-1.436-.076-.126-.269-.202-.572-.353z"/></svg>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Lógica para o Modal
+        function openNews(title, desc, link) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = desc;
+            document.getElementById('modalExternalLink').href = link;
+            document.getElementById('newsModal').style.display = 'flex';
+        }
+
+        function closeNews() {
+            document.getElementById('newsModal').style.display = 'none';
+        }
+
+        // Fechar se clicar fora da caixa branca
+        window.onclick = function(event) {
+            let modal = document.getElementById('newsModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="javascript.js"></script>
+
+<footer class="footer">
+    <div class="container grid-footer">
+        <div class="footer-col-1">
+            <div class="logo" style="margin-bottom: 15px;">FEDERAL<span>PREC</span></div>
+            <p>Especialistas em antecipação de precatórios com foco em agilidade, transparência e segurança jurídica para beneficiários e advogados.</p>
+            <div class="company-details">
+                <p>CNPJ: 41.495.962/0001-46</p>
+                <p>Av. João Cabral de Mello Neto, 850, Bloco B<br>Barra da Tijuca, Rio de Janeiro/RJ</p>
+            </div>
+            <div class="social-section">
+                <strong>Siga-nos:</strong>
+                <div class="social-icons">
+                    <a href="#" title="Instagram">Ig</a>
+                    <a href="#" title="LinkedIn">In</a>
+                    <a href="#" title="YouTube">Yt</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>LINKS ÚTEIS</h4>
+            <ul class="footer-links-list">
+                <li><a href="#">&bull; Início</a></li>
+                <li><a href="#vantagens">&bull; Vantagens</a></li>
+                <li><a href="#sobre">&bull; Sobre Nós</a></li>
+                <li><a href="#noticias">&bull; Notícias</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>SUPORTE</h4>
+            <div class="support-item">
+                <span>Central de Atendimento</span>
+                <p>📞 (21) 996753923</p>
+            </div>
+            <div class="support-item">
+                <span>E-mail</span>
+                <p>📧 federalprec@federalprec.com.br</p>
+            </div>
+            <div class="support-item">
+                <span>Horário de Atendimento</span>
+                <p>🕒 Seg a Sex, 9h às 17h</p>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>INSTITUCIONAL</h4>
+            <ul class="institucional-list">
+                <li><a href="#">🛡️ Política de Privacidade</a></li>
+                <li><a href="#">🛡️ Site em conformidade com a LGPD</a></li>
+            </ul>
+            <div class="seguranca">
+                <span>Site Seguro</span>
+                <div class="badges">
+                    <span class="badge">🔒 SSL</span>
+                    <span class="badge">🛡️ Seguro</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container bottom-flex">
+            <p>&copy; 2026 FederalPrec - Todos os direitos reservados. <span>Escritura Pública no 15º Cartório.</span></p>
+            <div class="bottom-links">
+                <a href="#">Acessibilidade</a> &bull; <a href="#">Mapa do Site</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
