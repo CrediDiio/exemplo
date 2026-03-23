@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* ESTILOS DE APOIO PARA O WHATSAPP E NOTÍCIAS */
+        
         .whatsapp-fixed {
             position: fixed;
             bottom: 20px;
@@ -111,15 +111,39 @@
             .grid-blog { grid-template-columns: 1fr; }
             .navbar .nav-links a:not(.btn-cta) { display: none; }
         }
+        /* Correção para o logo não ficar roxo ou azul */
+.logo-link {
+    text-decoration: none !important; /* Remove sublinhado */
+    color: inherit !important;        /* Força a usar a cor do texto original */
+    display: inline-block;
+}
+
+.logo-link:visited, 
+.logo-link:hover, 
+.logo-link:active {
+    color: inherit !important;        /* Garante que não mude de cor após clicar */
+    text-decoration: none !important;
+}
+
+/* Garante que o texto dentro do logo mantenha o estilo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif; /* Ou a fonte que você estiver usando */
+    font-weight: 700;
+    font-size: 1.5rem;
+}
     </style>
 </head>
 <body>
 
-   <nav class="navbar" data-aos="fade-down">
-    <div class="logo">FEDERAL<span>PREC</span></div>
+<nav class="navbar" data-aos="fade-down">
+    <a href="index.html" class="logo-link">
+        <div class="logo">FEDERAL<span>PREC</span></div>
+    </a>
+    
     <div class="nav-links">
-        <a href="#">INÍCIO</a>
-        <a href="#sobre">SOBRE</a>
+        <a href="index.html">INÍCIO</a> <a href="#sobre">SOBRE</a>
         <a href="#vantagens">VANTAGENS</a>
         <a href="#noticias">NOTÍCIAS</a> 
         <a href="#contato" class="btn-cta">NEGOCIE JÁ</a>
@@ -349,7 +373,6 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // Lógica para o Modal
         function openNews(title, desc, link) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDescription').innerText = desc;
@@ -370,6 +393,7 @@
         }
     </script>
     <script src="javascript.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <footer class="footer">
     <div class="container grid-footer">
@@ -383,9 +407,9 @@
             <div class="social-section">
                 <strong>Siga-nos:</strong>
                 <div class="social-icons">
-                    <a href="#" title="Instagram">Ig</a>
-                    <a href="#" title="LinkedIn">In</a>
-                    <a href="#" title="YouTube">Yt</a>
+                    <a href="https://facebook.com/federalprec" title="Facebook" target="_blank" rel="noopener">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -419,8 +443,8 @@
         <div class="footer-col">
             <h4>INSTITUCIONAL</h4>
             <ul class="institucional-list">
-                <li><a href="#">🛡️ Política de Privacidade</a></li>
-                <li><a href="#">🛡️ Site em conformidade com a LGPD</a></li>
+                <li><a href="privacidade.html" target="_blank" rel="noopener">🛡️ Política de Privacidade</a></li>
+                <li><a href="privacidade.html#lgpd" target="_blank" rel="noopener">🛡️ Site em conformidade com a LGPD</a></li>
             </ul>
             <div class="seguranca">
                 <span>Site Seguro</span>
@@ -434,13 +458,12 @@
 
     <div class="footer-bottom">
         <div class="container bottom-flex">
-            <p>&copy; 2026 FederalPrec - Todos os direitos reservados. <span>Escritura Pública no 15º Cartório.</span></p>
+            <p>&copy; 2026 FederalPrec - Todos os direitos reservados.</p>
             <div class="bottom-links">
                 <a href="#">Acessibilidade</a> &bull; <a href="#">Mapa do Site</a>
             </div>
         </div>
     </div>
 </footer>
-
 </body>
 </html>
