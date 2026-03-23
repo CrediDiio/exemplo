@@ -37,7 +37,7 @@
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* GRID DE NOTÍCIAS */
+      
         .grid-blog {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -62,7 +62,6 @@
         .blog-excerpt { color: #ccc; font-size: 0.9rem; margin-bottom: 20px; }
         .blog-link { color: #47c1b1; text-decoration: none; font-weight: bold; cursor: pointer; }
 
-        /* ESTILOS DO MODAL (JANELA DE NOTÍCIA) */
         .modal-news {
             display: none;
             position: fixed;
@@ -111,28 +110,59 @@
             .grid-blog { grid-template-columns: 1fr; }
             .navbar .nav-links a:not(.btn-cta) { display: none; }
         }
-        /* Correção para o logo não ficar roxo ou azul */
+
 .logo-link {
-    text-decoration: none !important; /* Remove sublinhado */
-    color: inherit !important;        /* Força a usar a cor do texto original */
+    text-decoration: none !important; 
+    color: inherit !important;   
     display: inline-block;
 }
 
 .logo-link:visited, 
 .logo-link:hover, 
 .logo-link:active {
-    color: inherit !important;        /* Garante que não mude de cor após clicar */
+    color: inherit !important; 
     text-decoration: none !important;
 }
 
-/* Garante que o texto dentro do logo mantenha o estilo */
 .logo {
     display: flex;
     align-items: center;
-    font-family: 'Montserrat', sans-serif; /* Ou a fonte que você estiver usando */
+    font-family: 'Montserrat', sans-serif; 
     font-weight: 700;
     font-size: 1.5rem;
 }
+
+.address-link {
+    text-decoration: none; 
+    color: inherit;    
+    transition: opacity 0.3s ease;
+}
+
+.address-link:hover {
+    opacity: 0.8; 
+    text-decoration: underline; 
+}
+
+
+.footer-link-nodecoration {
+    text-decoration: none;
+    color: inherit; 
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-link-nodecoration:hover {
+    color: #25d366; 
+    opacity: 0.9;
+    transform: translateX(5px); 
+}
+
+
+.footer-link-nodecoration:visited,
+.footer-link-nodecoration:active {
+    color: inherit;
+}
+
     </style>
 </head>
 <body>
@@ -384,7 +414,7 @@
             document.getElementById('newsModal').style.display = 'none';
         }
 
-        // Fechar se clicar fora da caixa branca
+   
         window.onclick = function(event) {
             let modal = document.getElementById('newsModal');
             if (event.target == modal) {
@@ -400,11 +430,20 @@
         <div class="footer-col-1">
             <div class="logo" style="margin-bottom: 15px;">FEDERAL<span>PREC</span></div>
             <p>Especialistas em antecipação de precatórios com foco em agilidade, transparência e segurança jurídica para beneficiários e advogados.</p>
-            <div class="company-details">
-                <p>CNPJ: 41.495.962/0001-46</p>
-                <p>Av. João Cabral de Mello Neto, 850, Bloco B<br>Barra da Tijuca, Rio de Janeiro/RJ</p>
+            
+            <div class="company-details" style="margin-top: 20px;">
+                <p><strong>CNPJ:</strong> 41.495.962/0001-46</p>
+                <p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=FederalPrec+Av.+João+Cabral+de+Mello+Neto,+850" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="footer-link-nodecoration">
+                        📍 Av. João Cabral de Mello Neto, 850, Bloco B<br>Barra da Tijuca, Rio de Janeiro/RJ
+                    </a>
+                </p>
             </div>
-            <div class="social-section">
+
+            <div class="social-section" style="margin-top: 20px;">
                 <strong>Siga-nos:</strong>
                 <div class="social-icons">
                     <a href="https://facebook.com/federalprec" title="Facebook" target="_blank" rel="noopener">
@@ -417,10 +456,10 @@
         <div class="footer-col">
             <h4>LINKS ÚTEIS</h4>
             <ul class="footer-links-list">
-                <li><a href="#">&bull; Início</a></li>
-                <li><a href="#vantagens">&bull; Vantagens</a></li>
-                <li><a href="#sobre">&bull; Sobre Nós</a></li>
-                <li><a href="#noticias">&bull; Notícias</a></li>
+                <li><a href="#">• Início</a></li>
+                <li><a href="#vantagens">• Vantagens</a></li>
+                <li><a href="#sobre">• Sobre Nós</a></li>
+                <li><a href="#noticias">• Notícias</a></li>
             </ul>
         </div>
 
@@ -431,8 +470,15 @@
                 <p>📞 (21) 996753923</p>
             </div>
             <div class="support-item">
-                <span>E-mail</span>
-                <p>📧 federalprec@federalprec.com.br</p>
+                <span>E-mail Corporativo</span>
+                <p>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=federalprecatorios@gmail.com" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="footer-link-nodecoration">
+                       📧 federalprecatorios@gmail.com
+                    </a>
+                </p>
             </div>
             <div class="support-item">
                 <span>Horário de Atendimento</span>
@@ -446,11 +492,11 @@
                 <li><a href="privacidade.html" target="_blank" rel="noopener">🛡️ Política de Privacidade</a></li>
                 <li><a href="privacidade.html#lgpd" target="_blank" rel="noopener">🛡️ Site em conformidade com a LGPD</a></li>
             </ul>
-            <div class="seguranca">
-                <span>Site Seguro</span>
-                <div class="badges">
-                    <span class="badge">🔒 SSL</span>
-                    <span class="badge">🛡️ Seguro</span>
+            <div class="seguranca" style="margin-top: 20px;">
+                <span>Ambiente Seguro</span>
+                <div class="badges" style="margin-top: 10px;">
+                    <span class="badge" style="background: #1a2a3a; padding: 5px 10px; border-radius: 4px; font-size: 12px;">🔒 SSL ATIVO</span>
+                    <span class="badge" style="background: #1a2a3a; padding: 5px 10px; border-radius: 4px; font-size: 12px; margin-left: 5px;">🛡️ LGPD</span>
                 </div>
             </div>
         </div>
@@ -458,9 +504,9 @@
 
     <div class="footer-bottom">
         <div class="container bottom-flex">
-            <p>&copy; 2026 FederalPrec - Todos os direitos reservados.</p>
+            <p>© 2026 FederalPrec - Todos os direitos reservados.</p>
             <div class="bottom-links">
-                <a href="#">Acessibilidade</a> &bull; <a href="#">Mapa do Site</a>
+                <a href="#">Acessibilidade</a> • <a href="#">Mapa do Site</a>
             </div>
         </div>
     </div>
