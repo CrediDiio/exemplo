@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. INICIALIZAÇÃO DE COMPONENTES
+ 
     const formCotacao = document.getElementById('formCotacao');
     const campoValor = document.getElementById('valor');
     const whatsappBtn = document.querySelector('.whatsapp-fixed');
     const inputs = document.querySelectorAll('input, textarea');
 
-    // 2. MÁSCARA DE MOEDA (R$ 0,00)
+   
     if (campoValor) {
         campoValor.addEventListener('input', (e) => {
             let value = e.target.value.replace(/\D/g, "");
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. ENVIO DO FORMULÁRIO PARA WHATSAPP
+  
     if (formCotacao) {
         formCotacao.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const numeroWhatsApp = "5521971804527";
             
-            // Usamos encodeURIComponent para evitar erros com acentos e espaços
+  
             const texto = `*Nova Solicitação de Análise - FederalPrec*\n\n` +
                           `*Nome:* ${dados.nome}\n` +
                           `*E-mail:* ${dados.email}\n` +
@@ -45,17 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. ESCONDER WHATSAPP AO DIGITAR (Melhora UX no Mobile)
+   
     inputs.forEach(input => {
         input.addEventListener('focus', () => { if(whatsappBtn) whatsappBtn.style.display = 'none'; });
         input.addEventListener('blur', () => { if(whatsappBtn) whatsappBtn.style.display = 'flex'; });
     });
 
-    // 5. CARREGAR NOTÍCIAS AUTOMÁTICAS
+ 
     carregarNoticias();
 });
 
-// 6. FUNÇÕES DAS NOTÍCIAS (FORA DO DOMCONTENTLOADED PARA SEREM GLOBAIS)
+
 async function carregarNoticias() {
     const termo = encodeURIComponent('precatórios federais');
     const rssUrl = `https://news.google.com/rss/search?q=${termo}&hl=pt-BR&gl=BR&ceid=BR:pt-419`;
@@ -70,11 +70,11 @@ async function carregarNoticias() {
         container.innerHTML = ''; 
 
         dados.items.slice(0, 3).forEach((item, index) => {
-            // Limpeza básica do título para remover o nome do jornal no final
+      
             const tituloLimpo = item.title.split(' - ')[0];
             const portal = item.author || item.source || "Notícias";
             
-            // Resumo extraído do conteúdo
+          
             let resumo = item.content.replace(/<[^>]*>?/gm, '').substring(0, 100) + '...';
             
             const imgPadrao = "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=600";
@@ -102,7 +102,7 @@ async function carregarNoticias() {
     }
 }
 
-// 7. CONTROLE DO MODAL
+
 function openNews(title, desc, link) {
     const modal = document.getElementById('newsModal');
     if (!modal) return;
@@ -121,7 +121,6 @@ function closeNews() {
     document.body.style.overflow = 'auto'; 
 }
 
-// Fechar modal ao clicar fora dele
 window.addEventListener('click', (event) => {
     const modal = document.getElementById('newsModal');
     if (event.target == modal) {
