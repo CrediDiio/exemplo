@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 detalhes: document.getElementById('detalhes').value
             };
 
-            const numeroWhatsApp = "5521971804527";
+            const numeroWhatsApp = "5521972441130";
             
   
             const texto = `*Nova Solicitação de Análise - FederalPrec*\n\n` +
